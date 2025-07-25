@@ -1,13 +1,14 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import Link from "next/link";
+import {Button} from "@/components/ui/button";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
   return (
     <main className="max-w-lg mx-auto mt-20">
-      <h1 className="text-3xl mb-4">Welcome to Auth Demo</h1>
+      <h1 className="text-3xl mb-4">Next Auth enabled boilerplate</h1>
       {session?.user ? (
         <div className="w-96 h-auto bg-slate-600 p-4 rounded-xl">
           <p>
@@ -16,17 +17,17 @@ export default async function Home() {
             Role: <strong>{session.user.role}</strong>
           </p>
           <form action="/api/auth/signout" method="post">
-            <button className="mt-4 bg-red-500 text-white px-4 py-2 rounded">
+            <Button >
               Logout
-            </button>
+            </Button>
           </form>
         </div>
       ) : (
-        <div className="w-96 h-auto bg-stone-600 p-4 rounded-xl">
+        <div className="flex items-center justify-center w-96 h-auto bg-stone-200 p-4 rounded-xl">
           <Link href="/login">
-            <button className="bg-blue-500 text-white px-4 py-2 rounded">
+            <Button >
               Login
-            </button>
+            </Button>
           </Link>
           <Link href="/register" className="ml-2 text-blue-700 underline">
             Register
