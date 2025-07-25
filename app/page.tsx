@@ -23,15 +23,27 @@ export default async function Home() {
           </form>
         </div>
       ) : (
-        <div className="flex items-center justify-center w-96 h-auto bg-stone-200 p-4 rounded-xl">
-          <Link href="/login">
-            <Button >
-              Login
-            </Button>
-          </Link>
-          <Link href="/register" className="ml-2 text-blue-700 underline">
-            Register
-          </Link>
+        <div className="flex flex-col items-center justify-center w-96 h-auto bg-stone-200 p-4 rounded-xl space-y-4">
+          <div className="flex space-x-4">
+            <Link href="/admin/login">
+              <Button className="bg-red-600 hover:bg-red-700">
+                Admin Login
+              </Button>
+            </Link>
+            <Link href="/library/login">
+              <Button className="bg-green-600 hover:bg-green-700">
+                Library Login
+              </Button>
+            </Link>
+          </div>
+          <div className="flex flex-col space-y-2">
+            <Link href="/register" className="text-blue-700 underline">
+              Register
+            </Link>
+            <Link href="/test-auth" className="text-purple-700 underline text-sm">
+              Test Authentication
+            </Link>
+          </div>
         </div>
       )}
     </main>

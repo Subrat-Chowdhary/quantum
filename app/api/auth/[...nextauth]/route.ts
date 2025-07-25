@@ -40,6 +40,14 @@ export const authOptions: NextAuthOptions = {
       if (session.user && token.role) session.user.role = token.role as string;
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      // If it's a callback URL, handle role-based redirection
+      if (url.startsWith(baseUrl)) {
+        return url;
+      }
+      // Default redirect to home
+      return baseUrl;
+    },
   },
   pages: {
     signIn: "/login",
